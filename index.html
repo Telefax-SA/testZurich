@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu IP Pública</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Enviar Email</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Ver tu IP Pública</h1>
-        <button id="btn-ip">Obtener mi IP</button>
-        <p id="resultado">Tu IP aparecerá aquí...</p>
-    </div>
-    
-    <script src="script.js"></script>
+  <h1>Enviar Email por el WS</h1>
+
+  <label>Destinatario:</label>
+  <input type="text" id="dest" value="nmarrero@telefax.com.uy"><br><br>
+
+  <label>Asunto:</label>
+  <input type="text" id="asunto" value="Prueba"><br><br>
+
+  <label>Mensaje:</label><br>
+  <textarea id="mensaje" rows="5" cols="40">Hola, esto es una prueba.</textarea><br><br>
+
+  <button onclick="enviarEmail()">Enviar Email</button>
+
+  <pre id="respuesta"></pre>
+
+  <script src="app.js"></script>
 </body>
 </html>
