@@ -2,24 +2,52 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Enviar Email</title>
+  <title>Test API Local</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      min-height: 30px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
-  <h1>Enviar Email por el WS</h1>
 
-  <label>Destinatario:</label>
-  <input type="text" id="dest" value="nmarrero@telefax.com.uy"><br><br>
+  <h2>Prueba de consumo API Local (HTTPS)</h2>
 
-  <label>Asunto:</label>
-  <input type="text" id="asunto" value="Prueba"><br><br>
+  <button onclick="testApi()">Consumir Endpoint</button>
 
-  <label>Mensaje:</label><br>
-  <textarea id="mensaje" rows="5" cols="40">Hola, esto es una prueba.</textarea><br><br>
+  <div id="output"></div>
 
-  <button onclick="enviarEmail()">Enviar Email</button>
+  <script>
+    function testApi() {
+      const output = document.getElementById("output");
+      output.innerHTML = "Llamando al servidor...";
 
-  <pre id="respuesta"></pre>
+      fetch("https://localhost:3000/ping")
+        .then(res => res.json())
+        .then(data => {
+          output.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        })
+        .catch(err => {
+          output.innerHTML = "Error: " + err;
+          console.error(err);
+        });
+    }
+  </script>
 
-  <script src="app.js"></script>
 </body>
 </html>
